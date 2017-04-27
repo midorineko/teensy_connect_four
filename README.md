@@ -16,7 +16,7 @@ Hold the enter button (Button 0)
 Tap the enter button after a move (Button 0)
 
 ##Solver
-Will automatically trigger when someone has won the game (not implemented)
+Will automatically trigger when someone has won the game
 
 ##AI
 Hold buttons 6 and 7 at the same time to start an AI game (not implemented)
