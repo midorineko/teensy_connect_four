@@ -1,0 +1,120 @@
+// Example program
+#include <iostream>
+#include <string>
+
+int main()
+{
+int point[2]={3,2};
+int endPoint[2]={point[0],point[1]};
+
+char loopColor[1]={'1'};
+bool downLoop = true;
+bool rightLoop = true;
+bool leftLoop = true;
+bool diagDownLeftLoop = true;
+bool diagDownRightLoop = true;
+bool diagUpRightLoop = true;
+bool diagUpLeftLoop = true;
+char az[6] = {'b','b','b','b','b','r'};
+char b[6] = {'r','r','r','b','r','r'};
+char c[6] = {'1','2','3','r','5','6'};
+char d[6] = {'1','2','r','b','5','6'};
+char e[6] = {'1','2','3','b','5','6'};
+char f[6] = {'1','2','3','4','5','6'};
+char g[6] = {'1','2','3','4','5','6'};
+char *arr[7] = {az,b,c,d,e,f,g};
+loopColor[0] = arr[point[0]][point[1]];
+
+for(int i=0; i <4; i++){
+	if(arr[point[0]][point[1]] != loopColor[0] || point[0] < 0 || point[1] < 0 || point[0] > 6 || point[1] > 5){
+		downLoop = false;
+	}
+	point[1] = point[1] - 1;
+}//down solving is working, next is right then left
+
+point[0] = endPoint[0];
+point[1] = endPoint[1];
+
+for(int j=0; j<4; j++){
+	if (point[0] < 0 || point[1] < 0 || point[0] > 6 || point[1] > 5){
+    	rightLoop = false;
+    }else{
+        if(arr[point[0]][point[1]] != loopColor[0]){
+    		rightLoop = false;
+    	}
+    }
+	point[0] = point[0] + 1;
+}//right solving is working, next is right then left
+
+point[0] = endPoint[0];
+point[1] = endPoint[1];
+for(int z=0; z<4; z++){
+    if (point[0] < 0 || point[1] < 0 || point[0] > 6 || point[1] > 5){
+    	leftLoop = false;
+    }else{
+        if(arr[point[0]][point[1]] != loopColor[0]){
+    		leftLoop = false;
+    	}
+    }
+	point[0] = point[0] - 1;
+}//left solving is working, next is right then left
+
+point[0] = endPoint[0];
+point[1] = endPoint[1];
+for(int z=0; z<4; z++){
+    if (point[0] < 0 || point[1] < 0 || point[0] > 6 || point[1] > 5){
+    	diagDownLeftLoop = false;
+    }else{
+        if(arr[point[0]][point[1]] != loopColor[0]){
+    		diagDownLeftLoop = false;
+    	}
+    }
+	point[0] = point[0] - 1;
+	point[1] = point[1] - 1;
+}//left solving is working
+
+point[0] = endPoint[0];
+point[1] = endPoint[1];
+for(int z=0; z<4; z++){
+    if (point[0] < 0 || point[1] < 0 || point[0] > 6 || point[1] > 5){
+    	diagDownRightLoop = false;
+    }else{
+        if(arr[point[0]][point[1]] != loopColor[0]){
+    		diagDownRightLoop = false;
+    	}
+    }
+	point[0] = point[0] + 1;
+	point[1] = point[1] - 1;
+}//left solving is working, next is right then left
+
+point[0] = endPoint[0];
+point[1] = endPoint[1];
+for(int z=0; z<4; z++){
+    if (point[0] < 0 || point[1] < 0 || point[0] > 6 || point[1] > 5){
+    	diagUpRightLoop = false;
+    }else{
+        if(arr[point[0]][point[1]] != loopColor[0]){
+    		diagUpRightLoop = false;
+    	}
+    }
+	point[0] = point[0] + 1;
+	point[1] = point[1] + 1;
+}//left solving is working, next is right then left
+
+point[0] = endPoint[0];
+point[1] = endPoint[1];
+for(int z=0; z<4; z++){
+    if (point[0] < 0 || point[1] < 0 || point[0] > 6 || point[1] > 5){
+    	diagUpLeftLoop = false;
+    }else{
+        if(arr[point[0]][point[1]] != loopColor[0]){
+    		diagUpLeftLoop = false;
+    	}
+    }
+	point[0] = point[0] - 1;
+	point[1] = point[1] + 1;
+}//left solving is working, next is right then left
+
+std::cout << downLoop <<" " <<rightLoop << " " << leftLoop << " " << diagDownLeftLoop << " " << diagDownRightLoop << " " << diagUpRightLoop << " " << diagUpLeftLoop;
+
+}
